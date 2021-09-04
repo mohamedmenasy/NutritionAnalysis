@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Nutrition Analysis</string>
+    <string name="main_activity_nutrition_analyzer">Nutrition Analyzer</string>
+    <string name="main_activity_header">Please Enter all ingredient you want to analyze</string>
+    <string name="main_activity_analyze">Analyze</string>
+
+    <string name="failure_network_connection">No Network Connection.</string>
+    <string name="failure_server_error">Server Error</string>
 </resources>

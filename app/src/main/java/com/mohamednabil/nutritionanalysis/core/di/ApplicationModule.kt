@@ -1,6 +1,7 @@
 package com.mohamednabil.nutritionanalysis.core.di
 
 import com.mohamednabil.nutritionanalysis.BuildConfig
+import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutritionRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +20,7 @@ class ApplicationModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com/android10/Sample-Data/master/Android-CleanArchitecture-Kotlin/")
+            .baseUrl(BuildConfig.BASE_URL)
             .client(createClient())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -29,9 +30,14 @@ class ApplicationModule {
         val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
         if (BuildConfig.DEBUG) {
             val loggingInterceptor =
-                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
+                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             okHttpClientBuilder.addInterceptor(loggingInterceptor)
         }
         return okHttpClientBuilder.build()
     }
+
+    @Provides
+    @Singleton
+    fun provideNutritionRepository(dataSource: NutritionRepository.Network): NutritionRepository =
+        dataSource
 }

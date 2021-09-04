@@ -1,4 +1,4 @@
-package com.mohamednabil.nutritionanalysis.ui.theme
+package com.mohamednabil.nutritionanalysis.core.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
