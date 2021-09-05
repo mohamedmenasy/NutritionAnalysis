@@ -11,6 +11,18 @@ data class NutrientsData(
     val totalNutrientsKCal: Map<String, NutrientsDataInfo>,
     val totalWeight: Double
 ) {
+    companion object {
+        val empty = NutrientsData(
+            0,
+            emptyList(),
+            emptyList(),
+            emptyMap(),
+            emptyMap(),
+            emptyMap(),
+            0.0
+        )
+    }
+
     fun toNutrientsDataView() = NutrientsDataView(
         calories,
         dietLabels,
