@@ -70,6 +70,12 @@ class NutritionAnalysisViewModelTest : AndroidTest() {
                 quantity shouldEqualTo 1.0
                 weight shouldEqualTo 195.0
             }
+            with(it.totalNutrients) {
+                size shouldEqualTo 1
+                get(0).label shouldEqualTo "Energy"
+                get(0).quantity shouldEqualTo 88.68059870625
+                get(0).unit shouldEqualTo "%"
+            }
         }
 
         runBlocking { nutritionAnalysisViewModel.getNutritionDetails(listOf("1 cup rice")) }
