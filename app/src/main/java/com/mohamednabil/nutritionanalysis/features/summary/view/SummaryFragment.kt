@@ -5,15 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
@@ -51,19 +48,26 @@ class SummaryFragment : Fragment() {
 
 @Composable
 fun SummaryScreen(nutrientsData: NutrientsDataView) {
+    var totalNutritions  = 0.0
 
     LazyColumn(contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)) {
 
         nutrientsData.data.forEach {
             item {
                 RenderNutrientItem(it)
+                totalNutritions += it.calories
             }
+        }
+        item {
+            Spacer(modifier = Modifier.padding(8.dp))
+            Text("Total nutrition : ${totalNutritions.format(1)} kcal")
         }
     }
 }
 
 @Composable
 fun RenderNutrientItem(nutrientsDataItem: NutrientsDataItem) {
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -78,6 +82,7 @@ fun RenderNutrientItem(nutrientsDataItem: NutrientsDataItem) {
             Text("Quantity: ${nutrientsDataItem.quantity.format(1)} ${nutrientsDataItem.measure}")
             Text("Calories: ${nutrientsDataItem.calories.format(1)} kcal")
             Text("Weight: ${nutrientsDataItem.weight.format(1)} g")
+
         }
     }
 }
