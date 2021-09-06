@@ -5,19 +5,20 @@ import com.mohamednabil.nutritionanalysis.core.functional.Either
 import com.mohamednabil.nutritionanalysis.core.functional.Either.Left
 import com.mohamednabil.nutritionanalysis.core.functional.Either.Right
 import com.mohamednabil.nutritionanalysis.core.platform.NetworkHandler
+import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.request.Ingredients
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responce.NutritionDetailsEntity
 import retrofit2.Call
 import javax.inject.Inject
 
 interface NutritionRepository {
-    fun getNutritionsForIngredients(ingredients: String): Either<Failure, NutrientsData>
+    fun getNutritionsForIngredients(ingredients: Ingredients): Either<Failure, NutrientsData>
 
     class Network
     @Inject constructor(
         private val networkHandler: NetworkHandler,
         private val service: NutritionService
     ) : NutritionRepository {
-        override fun getNutritionsForIngredients(ingredients: String): Either<Failure, NutrientsData> {
+        override fun getNutritionsForIngredients(ingredients: Ingredients): Either<Failure, NutrientsData> {
             return when (networkHandler.isNetworkAvailable()) {
                 true -> request(
                     service.getNutrition(ingredients),

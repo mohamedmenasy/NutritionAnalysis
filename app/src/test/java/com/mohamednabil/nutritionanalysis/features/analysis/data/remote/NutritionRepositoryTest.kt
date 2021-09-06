@@ -6,6 +6,7 @@ import com.mohamednabil.nutritionanalysis.core.extension.empty
 import com.mohamednabil.nutritionanalysis.core.functional.Either
 import com.mohamednabil.nutritionanalysis.core.platform.NetworkHandler
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutritionRepository.Network
+import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.request.Ingredients
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responce.NutritionDetailsEntity
 import io.mockk.Called
 import io.mockk.every
@@ -44,12 +45,13 @@ class NutritionRepositoryTest : UnitTest() {
         every { getNutritionResponse.body() } returns null
         every { getNutritionResponse.isSuccessful } returns true
         every { getNutritionCall.execute() } returns getNutritionResponse
-        every { service.getNutrition("1 cup rice") } returns getNutritionCall
+        every { service.getNutrition(Ingredients(listOf("1 cup rice"))) } returns getNutritionCall
 
-        val nutritions = networkRepository.getNutritionsForIngredients("1 cup rice")
+        val nutritions =
+            networkRepository.getNutritionsForIngredients(Ingredients(listOf("1 cup rice")))
 
         nutritions shouldEqual Either.Right(NutrientsData.empty)
-        verify(exactly = 1) { service.getNutrition("1 cup rice") }
+        verify(exactly = 1) { service.getNutrition(Ingredients(listOf("1 cup rice"))) }
     }
 
     @Test
@@ -60,37 +62,38 @@ class NutritionRepositoryTest : UnitTest() {
             emptyList(),
             emptyList(),
             emptyList(),
-            emptyMap(),
+            emptyList(),
             emptyMap(),
             emptyMap(),
             50.0,
-            String.empty()
+            String.empty(),
+            0.0
         )
         every { getNutritionResponse.isSuccessful } returns true
         every { getNutritionCall.execute() } returns getNutritionResponse
-        every { service.getNutrition("1 cup rice") } returns getNutritionCall
+        every { service.getNutrition(Ingredients(listOf("1 cup rice"))) } returns getNutritionCall
 
-        val nutritions = networkRepository.getNutritionsForIngredients("1 cup rice")
+        val nutritions =
+            networkRepository.getNutritionsForIngredients(Ingredients(listOf("1 cup rice")))
 
         nutritions shouldEqual Either.Right(
             NutrientsData(
                 1500,
                 emptyList(),
                 emptyList(),
-                emptyMap(),
-                emptyMap(),
-                emptyMap(),
+                emptyList(),
                 50.0
             )
         )
-        verify(exactly = 1) { service.getNutrition("1 cup rice") }
+        verify(exactly = 1) { service.getNutrition(Ingredients(listOf("1 cup rice"))) }
     }
 
     @Test
     fun `given networkHandler when call nutrition service then return network failure when no connection`() {
         every { networkHandler.isNetworkAvailable() } returns false
 
-        val nutritions = networkRepository.getNutritionsForIngredients("1 cup rice")
+        val nutritions =
+            networkRepository.getNutritionsForIngredients(Ingredients(listOf("1 cup rice")))
 
         nutritions shouldBeInstanceOf Either::class.java
         nutritions.isLeft shouldEqual true
@@ -105,9 +108,10 @@ class NutritionRepositoryTest : UnitTest() {
         every { networkHandler.isNetworkAvailable() } returns true
         every { getNutritionResponse.isSuccessful } returns false
         every { getNutritionCall.execute() } returns getNutritionResponse
-        every { service.getNutrition("1 cup rice") } returns getNutritionCall
+        every { service.getNutrition(Ingredients(listOf("1 cup rice"))) } returns getNutritionCall
 
-        val nutritions = networkRepository.getNutritionsForIngredients("1 cup rice")
+        val nutritions =
+            networkRepository.getNutritionsForIngredients(Ingredients(listOf("1 cup rice")))
 
         nutritions shouldBeInstanceOf Either::class.java
         nutritions.isLeft shouldEqual true
@@ -120,9 +124,10 @@ class NutritionRepositoryTest : UnitTest() {
     fun `given networkHandler, getNutritionResponse, getNutritionCall when call nutrition with an exceptions then catch exceptions`() {
         every { networkHandler.isNetworkAvailable() } returns true
         every { getNutritionCall.execute() } returns getNutritionResponse
-        every { service.getNutrition("1 cup rice") } returns getNutritionCall
+        every { service.getNutrition(Ingredients(listOf("1 cup rice"))) } returns getNutritionCall
 
-        val nutritions = networkRepository.getNutritionsForIngredients("1 cup rice")
+        val nutritions =
+            networkRepository.getNutritionsForIngredients(Ingredients(listOf("1 cup rice")))
 
         nutritions shouldBeInstanceOf Either::class.java
         nutritions.isLeft shouldEqual true

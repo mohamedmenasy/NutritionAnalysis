@@ -3,7 +3,8 @@ package com.mohamednabil.nutritionanalysis.features.analysis.viewmodel
 import com.mohamednabil.nutritionanalysis.core.AndroidTest
 import com.mohamednabil.nutritionanalysis.core.functional.Either.Right
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutrientsData
-import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutrientsDataInfo
+import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responce.Ingredient
+import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responce.Parsed
 import com.mohamednabil.nutritionanalysis.features.analysis.usecase.GetNutrition
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
@@ -35,34 +36,39 @@ class NutritionAnalysisViewModelTest : AndroidTest() {
                 "LOW_POTASSIUM",
                 "KIDNEY_FRIENDLY",
             ),
-            mapOf(
-                "ENERC_KCAL" to NutrientsDataInfo("Energy", 13.0, "%"),
-                "FAT" to NutrientsDataInfo("FAT", 0.8615384615384617, "%")
+            listOf(
+                Ingredient(
+                    listOf(
+                        Parsed(
+                            "rice",
+                            "food_bpumdjzb5rtqaeabb0kbgbcgr4t9",
+                            "rice",
+                            "cup",
+                            "http://www.edamam.com/ontologies/edamam.owl#Measure_cup",
+                            emptyMap(),
+                            1.0,
+                            195.0,
+                            "OK",
+                            195.0
+                        )
+                    ),
+                    "1 cup rice"
+                )
             ),
-            mapOf(
-                "ENERC_KCAL" to NutrientsDataInfo("Energy", 13.0, "%"),
-                "FAT" to NutrientsDataInfo("FAT", 0.8615384615384617, "%")
-            ),
-            mapOf(
-                "ENERC_KCAL" to NutrientsDataInfo("Energy", 13.0, "%"),
-                "FAT" to NutrientsDataInfo("FAT", 0.8615384615384617, "%")
-            ),
-            200.0
+            195.0
         )
         coEvery { getNutrition.run(any()) } returns Right(nutrientsData)
 
         nutritionAnalysisViewModel.nutritionDetails.observeForever {
-            with(it!!) {
-                calories shouldEqualTo 1000
-                dietLabels.size shouldEqualTo 2
-                healthLabels.size shouldEqualTo 2
-                totalDaily.size shouldEqualTo 2
-                totalNutrients.size shouldEqualTo 2
-                totalNutrientsKCal.size shouldEqualTo 2
-                totalWeight shouldEqualTo 200.0
+            with(it!!.data[0]) {
+                food shouldEqualTo "rice"
+                measure shouldEqualTo "cup"
+                calories shouldEqualTo 1000.0
+                quantity shouldEqualTo 1.0
+                weight shouldEqualTo 195.0
             }
         }
 
-        runBlocking { nutritionAnalysisViewModel.getNutritionDetails("1 cup rice") }
+        runBlocking { nutritionAnalysisViewModel.getNutritionDetails(listOf("1 cup rice")) }
     }
 }

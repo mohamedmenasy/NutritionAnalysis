@@ -4,6 +4,7 @@ import com.mohamednabil.nutritionanalysis.core.UnitTest
 import com.mohamednabil.nutritionanalysis.core.functional.Either
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutrientsData
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutritionRepository
+import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.request.Ingredients
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.verify
@@ -20,15 +21,15 @@ class GetNutritionTest : UnitTest() {
     @Before
     fun setUp() {
         getNutrition = GetNutrition(nutritionRepository)
-        every { nutritionRepository.getNutritionsForIngredients("1 cup rice") } returns Either.Right(
+        every { nutritionRepository.getNutritionsForIngredients(Ingredients(listOf("1 cup rice"))) } returns Either.Right(
             NutrientsData.empty
         )
     }
 
     @Test
     fun `given NutritionRepository when call GetNutrition usecase then get data from repository`() {
-        runBlocking { getNutrition.run(GetNutrition.Params("1 cup rice")) }
+        runBlocking { getNutrition.run(GetNutrition.Params(Ingredients(listOf("1 cup rice")))) }
 
-        verify(exactly = 1) { nutritionRepository.getNutritionsForIngredients("1 cup rice") }
+        verify(exactly = 1) { nutritionRepository.getNutritionsForIngredients(Ingredients(listOf("1 cup rice"))) }
     }
 }

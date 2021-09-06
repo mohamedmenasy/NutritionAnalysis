@@ -14,16 +14,18 @@ data class NutritionDetailsEntity(
     val dietLabels: List<String>,
     @SerializedName("healthLabels")
     val healthLabels: List<String>,
+    @SerializedName("ingredients")
+    val ingredients: List<Ingredient>,
     @SerializedName("totalDaily")
     val totalDaily: Map<String, NutrientsDataEntity>,
     @SerializedName("totalNutrients")
     val totalNutrients: Map<String, NutrientsDataEntity>,
-    @SerializedName("totalNutrientsKCal")
-    val totalNutrientsKCal: Map<String, NutrientsDataEntity>,
     @SerializedName("totalWeight")
     val totalWeight: Double,
     @SerializedName("uri")
-    val uri: String
+    val uri: String,
+    @SerializedName("yield")
+    val yield: Double
 ) {
     companion object {
         val empty = NutritionDetailsEntity(
@@ -31,11 +33,12 @@ data class NutritionDetailsEntity(
             emptyList(),
             emptyList(),
             emptyList(),
-            emptyMap(),
+            emptyList(),
             emptyMap(),
             emptyMap(),
             0.0,
-            String.empty()
+            String.empty(),
+            0.0
         )
     }
 
@@ -44,9 +47,7 @@ data class NutritionDetailsEntity(
             calories,
             dietLabels,
             healthLabels,
-            totalDaily.toNutrientsDataInfoMap(),
-            totalNutrients.toNutrientsDataInfoMap(),
-            totalNutrientsKCal.toNutrientsDataInfoMap(),
+            ingredients,
             totalWeight
         )
 
