@@ -7,14 +7,18 @@ import android.view.ViewGroup
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.mohamednabil.nutritionanalysis.core.extension.format
@@ -48,9 +52,12 @@ class SummaryFragment : Fragment() {
 
 @Composable
 fun SummaryScreen(nutrientsData: NutrientsDataView) {
-    var totalNutritions  = 0.0
+    var totalNutritions = 0.0
 
-    LazyColumn(contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)) {
+    LazyColumn(
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+        modifier = Modifier.fillMaxSize()
+    ) {
 
         nutrientsData.data.forEach {
             item {
@@ -59,15 +66,22 @@ fun SummaryScreen(nutrientsData: NutrientsDataView) {
             }
         }
         item {
+            //TODO : move this to the bottom of the screen
             Spacer(modifier = Modifier.padding(8.dp))
-            Text("Total nutrition : ${totalNutritions.format(1)} kcal")
+            Button(onClick = {
+                //TODO: go to facts fragment
+            }, modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    "Total nutrition : ${totalNutritions.format(1)} kcal",
+                    style = TextStyle(fontSize = 20.sp)
+                )
+            }
         }
     }
 }
 
 @Composable
 fun RenderNutrientItem(nutrientsDataItem: NutrientsDataItem) {
-
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -85,5 +99,11 @@ fun RenderNutrientItem(nutrientsDataItem: NutrientsDataItem) {
 
         }
     }
+}
+
+@Preview
+@Composable
+fun Preview() {
+    SummaryScreen(NutrientsDataView.empty)
 }
 
