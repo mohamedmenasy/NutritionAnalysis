@@ -82,6 +82,7 @@ class NutritionRepositoryTest : UnitTest() {
                 emptyList(),
                 emptyList(),
                 emptyList(),
+                emptyMap(),
                 50.0
             )
         )

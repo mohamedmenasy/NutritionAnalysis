@@ -4,6 +4,7 @@ import com.mohamednabil.nutritionanalysis.core.AndroidTest
 import com.mohamednabil.nutritionanalysis.core.functional.Either.Right
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutrientsData
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responce.Ingredient
+import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responce.NutrientsDataEntity
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responce.Parsed
 import com.mohamednabil.nutritionanalysis.features.analysis.usecase.GetNutrition
 import io.mockk.coEvery
@@ -26,6 +27,7 @@ class NutritionAnalysisViewModelTest : AndroidTest() {
 
     @Test
     fun `given GetNutrition usecase when call getNutritionDetails then update live data`() {
+
         val nutrientsData = NutrientsData(
             1000,
             listOf("LOW_FAT", "LOW_SODIUM"),
@@ -55,9 +57,10 @@ class NutritionAnalysisViewModelTest : AndroidTest() {
                     "1 cup rice"
                 )
             ),
+            mapOf("ENERC_KCAL" to NutrientsDataEntity("Energy", 88.68059870625, "%")),
             195.0
         )
-        coEvery { getNutrition.run(any()) } returns Right(nutrientsData)
+        coEvery { getNutrition.run(any()) } returns Right(nutrientsData.toNutrientsDataView())
 
         nutritionAnalysisViewModel.nutritionDetails.observeForever {
             with(it!!.data[0]) {
