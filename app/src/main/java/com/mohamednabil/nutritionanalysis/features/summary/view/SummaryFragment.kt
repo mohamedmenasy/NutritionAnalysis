@@ -11,25 +11,27 @@ import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.mohamednabil.nutritionanalysis.core.extension.format
 import com.mohamednabil.nutritionanalysis.core.ui.theme.NutritionAnalysisTheme
 import com.mohamednabil.nutritionanalysis.features.analysis.view.NutrientsDataItem
 import com.mohamednabil.nutritionanalysis.features.analysis.view.NutrientsDataView
+import com.mohamednabil.nutritionanalysis.features.analysis.viewmodel.NutritionAnalysisViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SummaryFragment : Fragment() {
-    private val args: SummaryFragmentArgs by navArgs()
+    private val viewModel by activityViewModels<NutritionAnalysisViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,27 +43,28 @@ class SummaryFragment : Fragment() {
                 NutritionAnalysisTheme {
                     Scaffold(
                         content = {
-                            SummaryScreen(args.nutrientsData)
+
+                            SummaryScreen()
                         })
                 }
             }
         }
     }
 
-
     @Composable
-    fun SummaryScreen(nutrientsData: NutrientsDataView) {
-        var totalNutritions = 0.0
+    fun SummaryScreen() {
+        val nutritionDetails: NutrientsDataView by viewModel.nutritionDetails.observeAsState(
+            NutrientsDataView.empty
+        )
 
         LazyColumn(
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
             modifier = Modifier.fillMaxSize()
         ) {
 
-            nutrientsData.data.forEach {
+            nutritionDetails.data.forEach {
                 item {
                     RenderNutrientItem(it)
-                    totalNutritions += it.calories
                 }
             }
             item {
@@ -69,14 +72,16 @@ class SummaryFragment : Fragment() {
                 Spacer(modifier = Modifier.padding(8.dp))
                 Button(onClick = {
                     val action =
-                        SummaryFragmentDirections.actionSummaryFragmentToFactsFragment(nutrientsData)
+                        SummaryFragmentDirections.actionSummaryFragmentToFactsFragment(
+                            nutritionDetails
+                        )
                     this@SummaryFragment.findNavController().navigate(
                         action
                     )
 
                 }, modifier = Modifier.fillMaxWidth()) {
                     Text(
-                        "Total nutrition : ${totalNutritions.format(1)} kcal",
+                        "Total nutrition : ${nutritionDetails.totalNutrients[0].quantity.format(1)} ${nutritionDetails.totalNutrients[0].unit}",
                         style = TextStyle(fontSize = 20.sp)
                     )
                 }
@@ -102,12 +107,6 @@ class SummaryFragment : Fragment() {
 
             }
         }
-    }
-
-    @Preview
-    @Composable
-    fun Preview() {
-        SummaryScreen(NutrientsDataView.empty)
     }
 }
 

@@ -9,21 +9,23 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
+import androidx.fragment.app.activityViewModels
 import com.mohamednabil.nutritionanalysis.core.extension.format
 import com.mohamednabil.nutritionanalysis.core.ui.theme.NutritionAnalysisTheme
 import com.mohamednabil.nutritionanalysis.features.analysis.view.NutrientsDataView
+import com.mohamednabil.nutritionanalysis.features.analysis.viewmodel.NutritionAnalysisViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FactsFragment : Fragment() {
-    private val args: FactsFragmentArgs by navArgs()
+    private val viewModel by activityViewModels<NutritionAnalysisViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +36,7 @@ class FactsFragment : Fragment() {
                 NutritionAnalysisTheme {
                     Scaffold(
                         content = {
-                            FactsScreen(args.nutrientsData)
+                            FactsScreen()
                         })
                 }
             }
@@ -42,20 +44,16 @@ class FactsFragment : Fragment() {
     }
 
     @Composable
-    fun FactsScreen(nutrientsData: NutrientsDataView) {
+    fun FactsScreen() {
+        val nutritionDetails: NutrientsDataView by viewModel.nutritionDetails.observeAsState(
+            NutrientsDataView.empty
+        )
         Column(modifier = Modifier.padding(16.dp)) {
             Text("Nutrition Facts")
-            nutrientsData.totalNutrients.forEach {
+            nutritionDetails.totalNutrients.forEach {
                 Text("Total ${it.label}: ${it.quantity.format(1)} ${it.unit}")
             }
         }
     }
-
-    @Preview
-    @Composable
-    fun Preview() {
-        FactsScreen(NutrientsDataView.empty)
-    }
-
 }
 

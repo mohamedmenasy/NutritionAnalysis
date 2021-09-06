@@ -25,7 +25,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.mohamednabil.nutritionanalysis.R
 import com.mohamednabil.nutritionanalysis.core.exception.Failure
@@ -38,7 +38,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class AnalysisFragment : Fragment() {
 
-    private val viewModel by viewModels<NutritionAnalysisViewModel>()
+    private val viewModel by activityViewModels<NutritionAnalysisViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
