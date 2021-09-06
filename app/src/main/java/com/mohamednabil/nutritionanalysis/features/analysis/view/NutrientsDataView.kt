@@ -5,10 +5,12 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class NutrientsDataView(
-    val data: ArrayList<NutrientsDataItem>
+    val data: ArrayList<NutrientsDataItem>,
+    val totalNutrients: MutableList<TotalNutrients>
 ) : Parcelable {
     companion object {
         val empty = NutrientsDataView(
+            arrayListOf(),
             arrayListOf()
         )
     }
@@ -21,4 +23,11 @@ data class NutrientsDataItem(
     val calories: Double,
     val quantity: Double,
     val weight: Double
+) : Parcelable
+
+@Parcelize
+data class TotalNutrients(
+    var label: String,
+    val quantity: Double,
+    val unit: String
 ) : Parcelable

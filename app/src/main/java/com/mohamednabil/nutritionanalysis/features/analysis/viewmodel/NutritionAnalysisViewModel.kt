@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.mohamednabil.nutritionanalysis.core.platform.BaseViewModel
-import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutrientsData
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.request.Ingredients
 import com.mohamednabil.nutritionanalysis.features.analysis.usecase.GetNutrition
 import com.mohamednabil.nutritionanalysis.features.analysis.view.NutrientsDataView
@@ -30,7 +29,7 @@ class NutritionAnalysisViewModel @Inject constructor(
     }
 
 
-    private fun handleNutritionDetails(nutrientsData: NutrientsData) {
-        _nutritionDetails.value = nutrientsData.toNutrientsDataView()
+    private fun handleNutritionDetails(nutrientsData: NutrientsDataView) {
+        _nutritionDetails.value = nutrientsData
     }
 }

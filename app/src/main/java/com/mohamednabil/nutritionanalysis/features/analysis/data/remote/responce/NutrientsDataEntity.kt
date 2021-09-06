@@ -2,6 +2,7 @@ package com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responc
 
 import com.google.gson.annotations.SerializedName
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutrientsDataInfo
+import com.mohamednabil.nutritionanalysis.features.analysis.view.TotalNutrients
 
 data class NutrientsDataEntity(
     @SerializedName("label")
@@ -13,6 +14,7 @@ data class NutrientsDataEntity(
 ) {
 
     fun toNutrientsDataInfo() = NutrientsDataInfo(label, quantity, unit)
+    fun toTotalNutrients() = TotalNutrients(label, quantity, unit)
 }
 
 

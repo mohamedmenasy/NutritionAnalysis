@@ -19,5 +19,16 @@
         <argument
             android:name="nutrientsData"
             app:argType="com.mohamednabil.nutritionanalysis.features.analysis.view.NutrientsDataView" />
+        <action
+            android:id="@+id/action_summaryFragment_to_factsFragment"
+            app:destination="@id/factsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/factsFragment"
+        android:name="com.mohamednabil.nutritionanalysis.features.facts.view.FactsFragment"
+        android:label="fragment_facts">
+        <argument
+            android:name="nutrientsData"
+            app:argType="com.mohamednabil.nutritionanalysis.features.analysis.view.NutrientsDataView" />
     </fragment>
 </navigation>

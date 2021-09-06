@@ -48,10 +48,9 @@ data class NutritionDetailsEntity(
             dietLabels,
             healthLabels,
             ingredients,
+            totalNutrients,
             totalWeight
         )
 
-    private fun Map<String, NutrientsDataEntity>.toNutrientsDataInfoMap() =
-        this.mapValues { it.value.toNutrientsDataInfo() }
 
 }
