@@ -1,7 +1,11 @@
 package com.mohamednabil.nutritionanalysis.features.analysis.usecase
 
+import com.mohamednabil.nutritionanalysis.core.exception.Failure
+import com.mohamednabil.nutritionanalysis.core.functional.Either
+import com.mohamednabil.nutritionanalysis.core.functional.getOrElse
 import com.mohamednabil.nutritionanalysis.core.functional.map
 import com.mohamednabil.nutritionanalysis.core.interactor.UseCase
+import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutrientsData
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutritionRepository
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.request.Ingredients
 import com.mohamednabil.nutritionanalysis.features.analysis.view.NutrientsDataView
@@ -12,9 +16,20 @@ class GetNutrition @Inject constructor(private val moviesRepository: NutritionRe
 
     data class Params(val ingredients: Ingredients)
 
-    override suspend fun run(params: Params) =
-        moviesRepository.getNutritionsForIngredients(params.ingredients)
-            .map {
-                it.toNutrientsDataView()
-            }
+    override suspend fun run(params: Params): Either<Failure, NutrientsDataView> {
+        val result = moviesRepository.getNutritionsForIngredients(params.ingredients)
+        val receivedNutrientsData = result.getOrElse(NutrientsData.empty)
+        if (receivedNutrientsData.totalNutrients.isNullOrEmpty()
+            || receivedNutrientsData.calories == 0
+            || receivedNutrientsData.dietLabels.isNullOrEmpty()
+            || receivedNutrientsData.healthLabels.isNullOrEmpty()
+        ) {
+            return Either.Left<Failure>(Failure.FeatureFailure)
+        }
+
+        return result.map {
+            it.toNutrientsDataView()
+        }
+    }
+
 }

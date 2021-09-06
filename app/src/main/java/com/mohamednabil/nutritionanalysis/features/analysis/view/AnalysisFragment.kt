@@ -1,11 +1,13 @@
 package com.mohamednabil.nutritionanalysis.features.analysis.view
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -77,14 +79,25 @@ class AnalysisFragment : Fragment() {
 
     private fun handleFailure(failure: Failure?) {
         when (failure) {
-            is Failure.NetworkConnection -> renderFailure(R.string.failure_network_connection)
-            is Failure.ServerError -> renderFailure(R.string.failure_server_error)
-            else -> renderFailure(R.string.failure_server_error)
+            is Failure.NetworkConnection -> renderFailureToast(R.string.failure_network_connection)
+            is Failure.ServerError -> renderFailureToast(R.string.failure_server_error)
+            is Failure.FeatureFailure -> renderFailureDialog(R.string.failure_no_data_for_ingredients)
+            else -> renderFailureToast(R.string.failure_server_error)
         }
     }
 
-    private fun renderFailure(@StringRes messageResID: Int) {
+    private fun renderFailureToast(@StringRes messageResID: Int) {
         Toast.makeText(context, messageResID, Toast.LENGTH_LONG).show()
+    }
+
+    private fun renderFailureDialog(@StringRes messageResID: Int) {
+        val alertDialogBuilder = context?.let { AlertDialog.Builder(it) }
+        alertDialogBuilder?.setTitle(R.string.app_name)
+        alertDialogBuilder?.setMessage(messageResID)
+        alertDialogBuilder?.setPositiveButton(
+            getString(R.string.ok)
+        ) { dialogInterface, _ -> dialogInterface.dismiss() }
+        alertDialogBuilder?.show()
     }
 }
 
