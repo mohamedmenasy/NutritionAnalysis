@@ -1,6 +1,5 @@
 package com.mohamednabil.nutritionanalysis.features.analysis.view
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -73,8 +72,8 @@ class AnalysisFragment : Fragment() {
                 it
             )
         }
+        //TODO: remove arguments
         action?.let { this.findNavController().navigate(it) }
-
     }
 
     private fun handleFailure(failure: Failure?) {

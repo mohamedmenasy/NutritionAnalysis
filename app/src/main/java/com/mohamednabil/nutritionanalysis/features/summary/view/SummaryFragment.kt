@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
@@ -17,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
@@ -70,16 +72,21 @@ class SummaryFragment : Fragment() {
             item {
                 //TODO : move this to the bottom of the screen
                 Spacer(modifier = Modifier.padding(8.dp))
-                Button(onClick = {
-                    val action =
-                        SummaryFragmentDirections.actionSummaryFragmentToFactsFragment(
-                            nutritionDetails
+                Button(
+                    onClick = {
+                        //TODO: remove arguments
+                        val action =
+                            SummaryFragmentDirections.actionSummaryFragmentToFactsFragment(
+                                nutritionDetails
+                            )
+                        this@SummaryFragment.findNavController().navigate(
+                            action
                         )
-                    this@SummaryFragment.findNavController().navigate(
-                        action
-                    )
 
-                }, modifier = Modifier.fillMaxWidth()) {
+                    }, modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                ) {
                     Text(
                         "Total nutrition : ${nutritionDetails.totalNutrients[0].quantity.format(1)} ${nutritionDetails.totalNutrients[0].unit}",
                         style = TextStyle(fontSize = 20.sp)
@@ -94,13 +101,19 @@ class SummaryFragment : Fragment() {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(15.dp),
+                .padding(8.dp),
+            shape = RoundedCornerShape(8.dp),
             elevation = 10.dp
         ) {
             Column(
-                modifier = Modifier.padding(15.dp)
+                modifier = Modifier
+                    .padding(15.dp)
+                    .fillMaxWidth()
             ) {
-                Text("Food: ${nutrientsDataItem.food}")
+                Text(
+                    nutrientsDataItem.food.uppercase(), style = TextStyle(fontSize = 18.sp),
+                    fontWeight = FontWeight.Bold,
+                )
                 Text("Quantity: ${nutrientsDataItem.quantity.format(1)} ${nutrientsDataItem.measure}")
                 Text("Calories: ${nutrientsDataItem.calories.format(1)} kcal")
                 Text("Weight: ${nutrientsDataItem.weight.format(1)} g")

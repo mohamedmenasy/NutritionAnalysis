@@ -6,4 +6,5 @@
     <string name="failure_server_error">Server Error</string>
     <string name="failure_no_data_for_ingredients">No data available for your ingredients, please enter data as following \"quantity unit name\", example: 1 cup rice</string>
     <string name="ok">OK</string>
+    <string name="facts_fragment_nutrition_facts">Nutrition Facts</string>
 </resources>
