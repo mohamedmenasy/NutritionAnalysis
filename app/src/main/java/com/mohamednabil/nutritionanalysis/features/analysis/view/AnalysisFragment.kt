@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
@@ -106,53 +106,58 @@ fun AnalysisScreen(viewModel: NutritionAnalysisViewModel) {
     var isAnalyzeButtonEnabled by remember { mutableStateOf(false) }
 
     val padding = 16.dp
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
             .padding(padding),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         content = {
-
-            Text(
-                text = stringResource(R.string.main_activity_header),
-                style = TextStyle(fontSize = 18.sp)
-            )
-            TextField(
-                modifier = Modifier
-                    .weight(4f)
-                    .padding(top = padding)
-                    .fillMaxWidth(),
-                value = searchText,
-                onValueChange = {
-                    searchText = it
-                    isAnalyzeButtonEnabled = it.trim().isNotEmpty()
-                },
-                placeholder = {
-                    Text(
-                        "Example: \n1 cup rice,\n" +
-                                "10 oz chickpeas", style = TextStyle(fontSize = 18.sp)
-                    )
-                }
-            )
-            Button(
-                onClick = {
-                    val ingredientsList =
-                        searchText.replace("\r", "").trim().split("\n").toList()
-                    viewModel.getNutritionDetails(ingredientsList)
-                },
-                enabled = isAnalyzeButtonEnabled,
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(top = padding)
-                    .fillMaxWidth()
-            ) {
+            item {
                 Text(
-                    stringResource(R.string.main_activity_analyze),
-                    style = TextStyle(fontSize = 20.sp)
+                    text = stringResource(R.string.main_activity_header),
+                    style = TextStyle(fontSize = 18.sp)
                 )
+            }
+            item {
 
+                TextField(
+                    modifier = Modifier
+                        .padding(top = padding)
+                        .fillMaxWidth(),
+                    value = searchText,
+                    onValueChange = {
+                        searchText = it
+                        isAnalyzeButtonEnabled = it.trim().isNotEmpty()
+                    },
+                    placeholder = {
+                        Text(
+                            "Example: \n1 cup rice,\n" +
+                                    "10 oz chickpeas", style = TextStyle(fontSize = 18.sp)
+                        )
+                    }
+                )
+            }
+            item {
+
+                Button(
+                    onClick = {
+                        val ingredientsList =
+                            searchText.replace("\r", "").trim().split("\n").toList()
+                        viewModel.getNutritionDetails(ingredientsList)
+                    },
+                    enabled = isAnalyzeButtonEnabled,
+                    shape = RoundedCornerShape(8.dp),
+                    modifier = Modifier
+                        .padding(top = padding)
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        stringResource(R.string.main_activity_analyze),
+                        style = TextStyle(fontSize = 20.sp)
+                    )
+
+                }
             }
         }
     )
