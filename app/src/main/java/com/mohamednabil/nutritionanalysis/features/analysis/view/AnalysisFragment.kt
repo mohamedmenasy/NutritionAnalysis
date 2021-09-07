@@ -7,10 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
@@ -23,6 +20,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
@@ -106,58 +104,52 @@ fun AnalysisScreen(viewModel: NutritionAnalysisViewModel) {
     var isAnalyzeButtonEnabled by remember { mutableStateOf(false) }
 
     val padding = 16.dp
-    LazyColumn(
+    Column(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxSize()
             .padding(padding),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
         content = {
-            item {
-                Text(
-                    text = stringResource(R.string.main_activity_header),
-                    style = TextStyle(fontSize = 18.sp)
-                )
-            }
-            item {
-
-                TextField(
-                    modifier = Modifier
-                        .padding(top = padding)
-                        .fillMaxWidth(),
-                    value = searchText,
-                    onValueChange = {
-                        searchText = it
-                        isAnalyzeButtonEnabled = it.trim().isNotEmpty()
-                    },
-                    placeholder = {
-                        Text(
-                            "Example: \n1 cup rice,\n" +
-                                    "10 oz chickpeas", style = TextStyle(fontSize = 18.sp)
-                        )
-                    }
-                )
-            }
-            item {
-
-                Button(
-                    onClick = {
-                        val ingredientsList =
-                            searchText.replace("\r", "").trim().split("\n").toList()
-                        viewModel.getNutritionDetails(ingredientsList)
-                    },
-                    enabled = isAnalyzeButtonEnabled,
-                    shape = RoundedCornerShape(8.dp),
-                    modifier = Modifier
-                        .padding(top = padding)
-                        .fillMaxWidth()
-                ) {
+            Text(
+                text = stringResource(R.string.main_activity_header),
+                style = TextStyle(fontSize = 18.sp),
+                textAlign = TextAlign.Center
+            )
+            TextField(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(top = padding)
+                    .fillMaxWidth(),
+                value = searchText,
+                onValueChange = {
+                    searchText = it
+                    isAnalyzeButtonEnabled = it.trim().isNotEmpty()
+                },
+                placeholder = {
                     Text(
-                        stringResource(R.string.main_activity_analyze),
-                        style = TextStyle(fontSize = 20.sp)
+                        "Example: \n1 cup rice,\n" +
+                                "10 oz chickpeas", style = TextStyle(fontSize = 18.sp)
                     )
-
                 }
+            )
+            Button(
+                onClick = {
+                    val ingredientsList =
+                        searchText.replace("\r", "").trim().split("\n").toList()
+                    viewModel.getNutritionDetails(ingredientsList)
+                },
+                enabled = isAnalyzeButtonEnabled,
+                shape = RoundedCornerShape(8.dp),
+                modifier = Modifier
+                    .padding(top = padding)
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    stringResource(R.string.main_activity_analyze),
+                    style = TextStyle(fontSize = 20.sp)
+                )
+
             }
         }
     )
