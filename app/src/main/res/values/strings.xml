@@ -7,4 +7,6 @@
     <string name="failure_no_data_for_ingredients">No data available for your ingredients, please enter data as following \"quantity unit name\", example: 1 cup rice</string>
     <string name="ok">OK</string>
     <string name="facts_fragment_nutrition_facts">Nutrition Facts</string>
+    <string name="facts">Facts</string>
+    <string name="summary">Summary</string>
 </resources>
