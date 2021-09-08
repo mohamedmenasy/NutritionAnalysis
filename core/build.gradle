@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdk Config.INSTANCE.compileSdkVersion
+
+    defaultConfig {
+        minSdk Config.INSTANCE.minSdkVersion
+        targetSdk Config.INSTANCE.targetSdkVersion
+        versionCode Config.INSTANCE.versionCode
+        versionName Config.INSTANCE.versionName
+
+        testInstrumentationRunner Config.INSTANCE.testRunner
+    }
+
+    buildTypes {
+        def localProperties = new Properties()
+        localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
+        debug {
+            buildConfigField("String", "BASE_URL", localProperties['baseURL'])
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    kapt Libraries.INSTANCE.hiltCompiler
+
+    implementation Libraries.INSTANCE.material
+
+    implementation Libraries.INSTANCE.hilt
+
+    implementation Libraries.INSTANCE.retrofitConverterGson
+    implementation Libraries.INSTANCE.retrofitLoggingInterceptor
+
+    implementation Libraries.INSTANCE.coroutines
+
+    testImplementation TestLibraries.INSTANCE.junit
+    testImplementation TestLibraries.INSTANCE.mockk
+    testImplementation TestLibraries.INSTANCE.kluent
+    testImplementation TestLibraries.INSTANCE.robolectric
+    testImplementation TestLibraries.INSTANCE.testRules
+
+    androidTestImplementation TestLibraries.INSTANCE.androidxJunit
+    androidTestImplementation TestLibraries.INSTANCE.espresso
+    androidTestImplementation TestLibraries.INSTANCE.uiTestJunit
+    debugImplementation TestLibraries.INSTANCE.uiTooling
+}

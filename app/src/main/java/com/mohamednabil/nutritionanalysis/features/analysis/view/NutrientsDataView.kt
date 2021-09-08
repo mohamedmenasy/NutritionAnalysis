@@ -1,7 +1,7 @@
 package com.mohamednabil.nutritionanalysis.features.analysis.view
 
 import android.os.Parcelable
-import com.mohamednabil.nutritionanalysis.core.extension.empty
+import com.mohamednabil.core.core.extension.empty
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -24,9 +24,9 @@ data class NutrientsDataItem(
     val calories: Double,
     val quantity: Double,
     val weight: Double
-) : Parcelable{
-    companion object{
-        val empty = NutrientsDataItem(String.empty(), String.empty(), 0.0,0.0,0.0)
+) : Parcelable {
+    companion object {
+        val empty = NutrientsDataItem(String.empty(), String.empty(), 0.0, 0.0, 0.0)
     }
 }
 

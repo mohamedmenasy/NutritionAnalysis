@@ -1,10 +1,10 @@
 package com.mohamednabil.nutritionanalysis.features.analysis.data.remote
 
-import com.mohamednabil.nutritionanalysis.core.UnitTest
-import com.mohamednabil.nutritionanalysis.core.exception.Failure
-import com.mohamednabil.nutritionanalysis.core.extension.empty
-import com.mohamednabil.nutritionanalysis.core.functional.Either
-import com.mohamednabil.nutritionanalysis.core.platform.NetworkHandler
+import com.mohamednabil.core.core.UnitTest
+import com.mohamednabil.core.core.exception.Failure
+import com.mohamednabil.core.core.extension.empty
+import com.mohamednabil.core.core.functional.Either
+import com.mohamednabil.core.core.platform.NetworkHandler
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutritionRepository.Network
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.request.Ingredients
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responce.NutritionDetailsEntity

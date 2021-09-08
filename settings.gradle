@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Nutrition Analysis"
 include ':app'
+include ':core'

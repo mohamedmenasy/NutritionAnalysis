@@ -1,7 +1,7 @@
 package com.mohamednabil.nutritionanalysis.features.analysis.viewmodel
 
+import com.mohamednabil.core.core.functional.Either.Right
 import com.mohamednabil.nutritionanalysis.core.AndroidTest
-import com.mohamednabil.nutritionanalysis.core.functional.Either.Right
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutrientsData
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responce.Ingredient
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responce.NutrientsDataEntity

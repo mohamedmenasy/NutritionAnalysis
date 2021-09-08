@@ -1,10 +1,10 @@
 package com.mohamednabil.nutritionanalysis.features.analysis.usecase
 
-import com.mohamednabil.nutritionanalysis.core.exception.Failure
-import com.mohamednabil.nutritionanalysis.core.functional.Either
-import com.mohamednabil.nutritionanalysis.core.functional.getOrElse
-import com.mohamednabil.nutritionanalysis.core.functional.map
-import com.mohamednabil.nutritionanalysis.core.interactor.UseCase
+import com.mohamednabil.core.core.exception.Failure
+import com.mohamednabil.core.core.functional.Either
+import com.mohamednabil.core.core.functional.getOrElse
+import com.mohamednabil.core.core.functional.map
+import com.mohamednabil.core.core.interactor.UseCase
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutrientsData
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutritionRepository
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.request.Ingredients

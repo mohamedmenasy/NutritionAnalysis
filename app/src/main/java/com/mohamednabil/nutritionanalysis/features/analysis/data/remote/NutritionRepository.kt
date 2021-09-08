@@ -1,10 +1,10 @@
 package com.mohamednabil.nutritionanalysis.features.analysis.data.remote
 
-import com.mohamednabil.nutritionanalysis.core.exception.Failure
-import com.mohamednabil.nutritionanalysis.core.functional.Either
-import com.mohamednabil.nutritionanalysis.core.functional.Either.Left
-import com.mohamednabil.nutritionanalysis.core.functional.Either.Right
-import com.mohamednabil.nutritionanalysis.core.platform.NetworkHandler
+import com.mohamednabil.core.core.exception.Failure
+import com.mohamednabil.core.core.functional.Either
+import com.mohamednabil.core.core.functional.Either.Left
+import com.mohamednabil.core.core.functional.Either.Right
+import com.mohamednabil.core.core.platform.NetworkHandler
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.request.Ingredients
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responce.NutritionDetailsEntity
 import retrofit2.Call

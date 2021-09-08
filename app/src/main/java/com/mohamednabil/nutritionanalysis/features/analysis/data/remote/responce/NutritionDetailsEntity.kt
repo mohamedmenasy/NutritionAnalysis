@@ -2,7 +2,7 @@ package com.mohamednabil.nutritionanalysis.features.analysis.data.remote.responc
 
 
 import com.google.gson.annotations.SerializedName
-import com.mohamednabil.nutritionanalysis.core.extension.empty
+import com.mohamednabil.core.core.extension.empty
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutrientsData
 
 data class NutritionDetailsEntity(

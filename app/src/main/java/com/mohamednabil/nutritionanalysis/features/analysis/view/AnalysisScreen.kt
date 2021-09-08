@@ -19,10 +19,10 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavController
+import com.mohamednabil.core.core.exception.Failure
 import com.mohamednabil.nutritionanalysis.R
-import com.mohamednabil.nutritionanalysis.core.exception.Failure
-import com.mohamednabil.nutritionanalysis.core.navigation.Screen
 import com.mohamednabil.nutritionanalysis.features.analysis.viewmodel.NutritionAnalysisViewModel
+import com.mohamednabil.nutritionanalysis.features.common.navigation.Screen
 
 @Composable
 fun AnalysisScreen(

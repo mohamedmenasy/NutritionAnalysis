@@ -1,7 +1,7 @@
 package com.mohamednabil.nutritionanalysis.features.analysis.usecase
 
-import com.mohamednabil.nutritionanalysis.core.UnitTest
-import com.mohamednabil.nutritionanalysis.core.functional.Either
+import com.mohamednabil.core.core.UnitTest
+import com.mohamednabil.core.core.functional.Either
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutrientsData
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.NutritionRepository
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.request.Ingredients

@@ -14,10 +14,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.mohamednabil.nutritionanalysis.core.extension.format
-import com.mohamednabil.nutritionanalysis.core.navigation.Screen
+import com.mohamednabil.core.core.extension.format
 import com.mohamednabil.nutritionanalysis.features.analysis.view.NutrientsDataItem
 import com.mohamednabil.nutritionanalysis.features.analysis.viewmodel.NutritionAnalysisViewModel
+import com.mohamednabil.nutritionanalysis.features.common.navigation.Screen
 
 @Composable
 fun SummaryScreen(viewModel: NutritionAnalysisViewModel, navController: NavController) {

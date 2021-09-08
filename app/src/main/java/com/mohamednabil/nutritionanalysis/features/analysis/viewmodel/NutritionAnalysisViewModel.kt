@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mohamednabil.nutritionanalysis.core.exception.Failure
+import com.mohamednabil.core.core.exception.Failure
 import com.mohamednabil.nutritionanalysis.features.analysis.data.remote.request.Ingredients
 import com.mohamednabil.nutritionanalysis.features.analysis.usecase.GetNutrition
 import com.mohamednabil.nutritionanalysis.features.analysis.view.AnalysisUiState
