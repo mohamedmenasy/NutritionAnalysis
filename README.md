@@ -13,11 +13,11 @@ Nutrition Analysis is an application designed to analyze any recipe and get a de
 
 ## Screenshots📷
 
-| ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_1_portrait_light.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_2_portrait_light.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_3_portrait_light.jpg) |
+| ![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/Screenshot_1_portrait_light.jpg) | ![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/Screenshot_2_portrait_light.jpg) | ![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/Screenshot_3_portrait_light.jpg) |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_4_portrait_light.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_2_portrait_dark.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_3_portrait_dark.jpg) |
-| ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_1_landscape_dark.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_2_landscape_dark.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_3_landscape_dark.jpg) |
-| ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_1_landscape_light.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_2_landscape_light.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_3_landscape_light.jpg) |
+| ![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/Screenshot_4_portrait_light.jpg) | ![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/Screenshot_2_portrait_dark.jpg) | ![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/Screenshot_3_portrait_dark.jpg) |
+| ![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/Screenshot_1_landscape_dark.jpg) | ![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/Screenshot_2_landscape_dark.jpg) | ![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/Screenshot_3_landscape_dark.jpg) |
+| ![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/Screenshot_1_landscape_light.jpg) | ![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/Screenshot_2_landscape_light.jpg) | ![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/Screenshot_3_landscape_light.jpg) |
 
 ## Demo📱
 
