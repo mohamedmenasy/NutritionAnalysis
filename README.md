@@ -21,7 +21,7 @@ Nutrition Analysis is an application designed to analyze any recipe and get a de
 
 ## Demo📱
 
-[![Demo Video](https://i9.ytimg.com/vi/2P3mqUBVdwg/mqdefault.jpg?sqp=CITQ54kG&rs=AOn4CLDimTMtUgG-ZYAyWlIDeuw8PDKUTQ)](https://www.youtube.com/watch?v=2P3mqUBVdwg)
+[![Demo Video](https://i9.ytimg.com/vi/2P3mqUBVdwg/mq2.jpg?sqp=CISx6YkG&rs=AOn4CLDW2u4Gq80WZF_TgFREbZMrOTKJuw)](https://www.youtube.com/watch?v=2P3mqUBVdwg)
 
 ## Built With🛠
 
@@ -64,7 +64,7 @@ $ adb shell am start -n 'com.mohamednabil.nutritionanalysis/com.mohamednabil.nut
 
 ## Todo✅
 
-- [ ] Add more unit tests.
+- [ ] Increase the test coverage.
 - [ ] Add Espresso tests.
 
 ## Author
