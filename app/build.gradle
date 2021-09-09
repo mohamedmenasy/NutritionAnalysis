@@ -58,6 +58,9 @@ android {
             includeAndroidResources = true
         }
     }
+    sourceSets {
+        test.java.srcDirs += ["${project(':core').projectDir}/src/test/java"]
+    }
 }
 
 dependencies {
