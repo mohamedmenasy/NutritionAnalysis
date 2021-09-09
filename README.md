@@ -2,7 +2,7 @@
 
 Nutrition Analysis is an application designed to analyze any recipe and get a detailed nutrition data about it .
 
-## Features
+## Features📝
 
 ### Functional Requirements
 
@@ -12,6 +12,8 @@ Nutrition Analysis is an application designed to analyze any recipe and get a de
 - Users can use the application in portrait and landscape modes.
 
 ## Demo📱
+
+[![Demo Video](https://i9.ytimg.com/vi/2P3mqUBVdwg/mqdefault.jpg?sqp=CITQ54kG&rs=AOn4CLDimTMtUgG-ZYAyWlIDeuw8PDKUTQ)](https://www.youtube.com/watch?v=2P3mqUBVdwg)
 
 ## Built With🛠
 
@@ -52,7 +54,7 @@ $ adb shell am start -n 'com.mohamednabil.nutritionanalysis/com.mohamednabil.nut
 ./gradlew app:core:testDebug
 ```
 
-## Todo
+## Todo✅
 
 - [ ] Add more unit tests.
 - [ ] Add Espresso tests.
