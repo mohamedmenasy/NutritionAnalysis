@@ -1,4 +1,4 @@
-# Nutrition Analysis 
+# Nutrition Analysis - Compose
 
 Nutrition Analysis is an application designed to analyze any recipe and get a detailed nutrition data about it .
 
@@ -10,6 +10,14 @@ Nutrition Analysis is an application designed to analyze any recipe and get a de
 - Users can see a summary breakdown for entered ingredients in a list.
 - Users can see total nutrition facts on daily basis for entered ingredients.
 - Users can use the application in portrait and landscape modes.
+
+## Screenshots📷
+
+| ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_1_portrait_light.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_2_portrait_light.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_3_portrait_light.jpg) |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_4_portrait_light.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_2_portrait_dark.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_3_portrait_dark.jpg) |
+| ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_1_landscape_dark.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_2_landscape_dark.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_3_landscape_dark.jpg) |
+| ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_1_landscape_light.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_2_landscape_light.jpg) | ![](C:\Users\Max\AndroidStudioProjects\NutritionAnalysis\Screenshots\Screenshot_3_landscape_light.jpg) |
 
 ## Demo📱
 
