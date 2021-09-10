@@ -62,6 +62,18 @@ $ adb shell am start -n 'com.mohamednabil.nutritionanalysis/com.mohamednabil.nut
 ./gradlew app:core:testDebug
 ```
 
+## Code Quality👍
+
+#### SonarQube Resport
+
+https://sonarcloud.io/dashboard?id=mohamedmenasy_NutritionAnalysis
+
+#### CodeMR Report
+
+![](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/codemr.png)
+
+You can check the CodeMR under codemr folder
+
 ## Todo✅
 
 - [ ] Increase the test coverage.
