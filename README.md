@@ -21,7 +21,7 @@ Nutrition Analysis is an application designed to analyze any recipe and get a de
 
 ## Demo📱
 
-[![Demo Video](https://i9.ytimg.com/vi/2P3mqUBVdwg/mqdefault.jpg?sqp=COzI7IkG&rs=AOn4CLBp9JYYJKUiABozryC6q31dL9lDBQ)](https://www.youtube.com/watch?v=2P3mqUBVdwg)
+[![Demo Video](https://raw.githubusercontent.com/mohamedmenasy/NutritionAnalysis/main/Screenshots/youtube_thumbnail.jpg)](https://www.youtube.com/watch?v=2P3mqUBVdwg)
 
 ## Built With🛠
 
