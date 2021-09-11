@@ -64,7 +64,7 @@ $ adb shell am start -n 'com.mohamednabil.nutritionanalysis/com.mohamednabil.nut
 
 ## Code Quality👍
 
-#### SonarQube Resport
+#### SonarQube Report
 
 https://sonarcloud.io/dashboard?id=mohamedmenasy_NutritionAnalysis
 
