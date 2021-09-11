@@ -1,6 +1,6 @@
 # Nutrition Analysis - Compose [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mohamedmenasy_NutritionAnalysis&metric=alert_status)](https://sonarcloud.io/dashboard?id=mohamedmenasy_NutritionAnalysis)
 
-Nutrition Analysis is an application designed to analyze any recipe and get a detailed nutrition data about it .
+Nutrition Analysis is an application designed to analyze any recipe and get detailed nutrition data about it.
 
 ## Features📝
 
